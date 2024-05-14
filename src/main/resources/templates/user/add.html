@@ -6,31 +6,33 @@
   <title>Sign Up</title>
 </head>
 <body>
-<form method = 'post' th:action="@{/user}">
-  <label>
-    Username:
-    <input type = 'text' name = 'username' th:value="${username}">
-  </label>
+<h1>Sign Up</h1>
+<form method="post" th:action="@{/user}" th:object="${user}">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" th:field="*{username}" />
+    <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+  </div>
 
-  <label>
-    Email:
-    <input type = 'email' name = 'email' th:value="${email}">
-  </label>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:field="*{email}" />
+    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+  </div>
 
-  <label>
-    Password:
-    <input type = 'password' name = 'password'>
-  </label>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" th:field="*{password}" />
+    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+  </div>
 
-  <label>
-    Verify Password:
-    <input type = 'password' name = 'verify'>
-  </label>
+  <div>
+    <label for="verify">Verify Password:</label>
+    <input type="password" id="verify" name="verify" th:field="*{verify}" />
+    <div th:if="${#fields.hasErrors('verify')}" th:errors="*{verify}"></div>
+  </div>
 
-  <p th:text="${error}"></p>
-
-  <input type = 'submit' value = 'Sign Up'>
+  <input type="submit" value="Sign Up" />
 </form>
-
 </body>
 </html>
